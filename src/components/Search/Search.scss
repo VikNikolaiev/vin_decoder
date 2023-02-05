@@ -1,0 +1,102 @@
+@import "../../utils/_variables";
+
+.search {
+  &__box {
+    padding-bottom: 50px;
+  }
+
+  &__label {
+    display: block;
+    line-height: 3rem;
+    color: $secondaryColor;
+    font-size: 2em;
+    font-weight: 700;
+    padding-bottom: 15px;
+  }
+
+  &__field {
+    max-width: 300px;
+    height: 36px;
+    margin: auto;
+    border-radius: 3px;
+    border: 1px solid $primaryColor;
+  }
+
+  &__input {
+    width: 71%;
+    padding: 10px 5px;
+    float: left;
+    color: $primaryColor;
+    border: 0;
+    border-radius: 3px 0 0 3px;
+
+    &:focus {
+      outline: 0;
+      background: transparent;
+    }
+  }
+
+  &__submit {
+    width: 25%;
+    position: relative;
+    float: right;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    height: 36px;
+    color: $primaryColor;
+    background: transparent;
+    border-left: 1px solid $primaryColor;
+    border-radius: 0 3px 3px 0;
+
+    &:hover {
+      background: $secondaryColor;
+      color: #fff;
+    }
+
+    &:active {
+      box-shadow: 0 0 12px 0 rgba(225, 225, 225, 1);
+    }
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  &__error {
+    min-height: 2rem;
+    height: auto;
+
+    &__message {
+      height: auto;
+      margin: 0;
+      padding: 5px 0;
+      color: red;
+    }
+  }
+
+  &__history {
+    font-size: 12px;
+  }
+
+  &__history-item {
+
+    font-size: 12px;
+    text-decoration: underline;
+    margin: auto;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      &::after {
+        display: inline-block;
+        content: ',\00a0';
+        text-decoration: none;
+        cursor: none;
+      }
+    }
+
+    &:hover {
+      background-color: #ddd;
+    }
+  }
+}

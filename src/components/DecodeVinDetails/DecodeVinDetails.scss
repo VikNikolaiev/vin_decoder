@@ -1,0 +1,83 @@
+@import "../../utils/_variables";
+
+.header-details {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 15px;
+  border-radius: 3px;
+  background-color: $secondaryColor;
+  color: #fff;
+
+  &__value {
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    line-height: 2rem;
+    font-weight: 700;
+  }
+}
+
+.table-details {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+
+  @media screen and (max-width: 700px) {
+    table-layout: fixed;
+  }
+
+  & tr {
+    &:last-child {
+      border-bottom: 1px solid #e3e3e3;
+    }
+  }
+
+  & td {
+    text-align: left;
+    font-size: 0.9rem;
+    color: $primaryColor;
+    font-weight: 400;
+    line-height: 1.7rem;
+    padding: 5px 10px;
+    border: 1px solid #e3e3e3;
+    vertical-align: top;
+
+    & p {
+      margin: 0;
+
+      &:not(:first-child) {
+        margin-top: 10px;
+      }
+    }
+    & ul {
+      margin: 0;
+    }
+  }
+
+  &__value {
+    font-weight: 700;
+  }
+
+  &--block {
+    & td {
+      @media screen and (max-width: 700px) {
+        border-bottom: none;
+        display: block;
+        font-size: .8rem;
+        text-align: left;
+        padding: 2px 10px;
+      }
+    }
+  }
+
+  &--stripes {
+    & tr {
+      &:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      &:hover {
+        background-color: #ddd;
+      }
+    }
+  }
+}
