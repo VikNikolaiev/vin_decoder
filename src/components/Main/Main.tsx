@@ -25,7 +25,7 @@ export const Main: FC = () => {
 
   useEffect(() => {
     loadVehicleVariables().then();
-  }, []);
+  }, [loadVehicleVariables]);
 
   return (
     <main className="main">

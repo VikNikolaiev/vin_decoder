@@ -67,7 +67,7 @@ export const Search: FC<Props> = ({ setDecodeVin, setIsLoading, setCurrentVinQue
     }
 
     setIsLoading(false);
-  }, [vinQuery]);
+  }, [vinQuery, setDecodeVin, setIsLoading]);
 
   const handleSubmit = (event:React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
