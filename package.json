@@ -2,6 +2,9 @@
   "homepage": ".",
   "name": "react-typescript-starter-pack",
   "version": "0.1.0",
+  "engines": {
+    "node": "14"
+  },
   "dependencies": {
     "@avtopro/button": "^0.9.7-344ab8b.0",
     "@avtopro/icons": "^0.23.1-344ab8b.0",
