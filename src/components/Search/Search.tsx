@@ -4,6 +4,10 @@ import React, {
 import { getDecodeVin } from '../../api/decodeVin';
 import { DecodeVin } from '../../types/decodeVin';
 import './Search.scss';
+import TextInput from '@avtopro/text-input/dist/index';
+import Button from '@avtopro/button/dist/index';
+import Select, {Option} from '@avtopro/select/dist/index';
+import Modal from '@avtopro/modal/dist/index';
 
 interface Props {
   setDecodeVin:(decodeVin: DecodeVin[]) => void;
@@ -115,6 +119,26 @@ export const Search: FC<Props> = ({ setDecodeVin, setIsLoading, setCurrentVinQue
             Decode Your Vehicle Identification Number
           </label>
           <div className="search__field">
+            <TextInput 
+              placeholder="Enter VIN code ..."
+              blockSize='' 
+              value={vinQuery}
+              onChange={(changeEvent: React.ChangeEvent<HTMLInputElement>) => {
+                setWrongVinQuery(false);
+                setVinQuery(changeEvent.target.value);
+              }}
+            />
+
+            <Button
+              type="submit"
+              theme="blue"
+              uppercase
+            >
+              Find
+            </Button>
+          </div>
+
+          {/* <div className="search__field">            
             <input
               type="text"
               id="search__input"
@@ -133,17 +157,53 @@ export const Search: FC<Props> = ({ setDecodeVin, setIsLoading, setCurrentVinQue
             >
               Find
             </button>
-          </div>
+          </div> */}
 
           <div className="search__error">
             {wrongVinQuery && (
-              <div className="search__error__message">{message}</div>
+              <Modal
+                mode="error"
+                closeOnClick
+                theme="danger"
+                onClose={() => {
+                  setWrongVinQuery(false);
+                }}
+              >
+                {message}
+              </Modal>
+              
+              
+              // <div className="search__error__message">{message}</div>
             )}
           </div>
 
+          
+
           {vinLastViews.length > 0 && (
             <div className="search__history">
-              {'Last views: '}
+              <Select
+                  name=""
+                  placeholder='Last views:'
+                  onChange={(_name: any, value: React.SetStateAction<string>[]) => {
+                    setVinQuery(value[0]);
+                    
+                    // setDecodeVin([]);
+                    // loadDecodeVin().then();
+                    // setCurrentVinQuery(vinQuery);
+                    // setVinQuery('');
+
+
+                    setWrongVinQuery(false);
+                  }}
+              >
+                  {vinLastViews.map(vinCode => (
+                      <Option key={vinCode} value={vinCode}>
+                          {vinCode}
+                      </Option>
+                  ))}
+              </Select>
+
+              {/* {'Last views: '}
               {vinLastViews.map(vinCode => (
                 <span
                   key={vinCode}
@@ -156,7 +216,7 @@ export const Search: FC<Props> = ({ setDecodeVin, setIsLoading, setCurrentVinQue
                 >
                   {`${vinCode}`}
                 </span>
-              ))}
+              ))} */}
             </div>
           )}
         </form>

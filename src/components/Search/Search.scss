@@ -15,11 +15,12 @@
   }
 
   &__field {
+    display: flex;
     max-width: 300px;
-    height: 36px;
+    // height: 36px;
     margin: auto;
-    border-radius: 3px;
-    border: 1px solid $primaryColor;
+    // border-radius: 3px;
+    // border: 1px solid $primaryColor;
   }
 
   &__input {
